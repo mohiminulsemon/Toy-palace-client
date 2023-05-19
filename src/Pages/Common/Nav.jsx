@@ -27,19 +27,25 @@ const Nav = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to = "/" >Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to = "/alltoys" >All Toys</Link>
+                <Link to="/alltoys">All Toys</Link>
               </li>
               <li>
-                <Link to = "/mytoys" >My Toys</Link>
+                <Link to="/mytoys">My Toys</Link>
               </li>
               <li>
-                <Link to = "/addtoys" >Add a Toy</Link>
+                <Link to="/addtoys">Add a Toy</Link>
               </li>
               <li>
-                <Link to = "/blogs" >Blogs</Link>
+                <Link to="/blogs">Blogs</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign Up</Link>
               </li>
             </ul>
           </div>
@@ -48,19 +54,25 @@ const Nav = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to = "/" >Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to = "/alltoys" >All Toys</Link>
+              <Link to="/alltoys">All Toys</Link>
             </li>
             <li>
-              <Link to = "/mytoys" >My Toys</Link>
+              <Link to="/mytoys">My Toys</Link>
             </li>
             <li>
-              <Link to = "/addtoys" >Add a Toy</Link>
+              <Link to="/addtoys">Add a Toy</Link>
             </li>
             <li>
-              <Link to = "/blogs" >Blogs</Link>
+              <Link to="/blogs">Blogs</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
             </li>
           </ul>
         </div>
