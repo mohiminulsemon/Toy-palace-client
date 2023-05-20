@@ -13,7 +13,7 @@ const SubCat = () => {
 
   const fetchToys = async () => {
     try {
-      const response = await fetch("http://localhost:5000/all-toys");
+      const response = await fetch("https://toy-server-plum.vercel.app/all-toys");
       if (response.ok) {
         const data = await response.json();
         setToys(data);

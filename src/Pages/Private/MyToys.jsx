@@ -46,7 +46,7 @@ const MyToys = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/toys/${id}`, {
+      const response = await fetch(`https://toy-server-plum.vercel.app/toys/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

@@ -37,17 +37,17 @@ const router = createBrowserRouter([
         {
             path: "/mytoys",
             element: <MyToys></MyToys>,
-            loader:  () => fetch('http://localhost:5000/all-toys'),
+            loader:  () => fetch('https://toy-server-plum.vercel.app/all-toys'),
         },
         {
             path: "/alltoys",
             element: <AllToys></AllToys>,
-            loader:  () => fetch('http://localhost:5000/all-toys'),
+            loader:  () => fetch('https://toy-server-plum.vercel.app/all-toys'),
         },
         {
             path: "/alltoys/:id",
             element: <Viewdetails></Viewdetails>,
-            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+            loader: ({params}) => fetch(`https://toy-server-plum.vercel.app/toys/${params.id}`)
         }
       ]
     },
