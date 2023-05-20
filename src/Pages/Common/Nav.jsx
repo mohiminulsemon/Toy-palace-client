@@ -1,6 +1,19 @@
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../auth/AuthProviders";
+import { useContext } from "react";
 
 const Nav = () => {
+
+  // const location = useLocation();
+
+  const { user, logOut } = useContext(AuthContext);
+  // console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <div className="navbar bg-primary text-white">
@@ -27,26 +40,26 @@ const Nav = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <Link to="/alltoys">All Toys</Link>
+                <NavLink to="/alltoys">All Toys</NavLink>
               </li>
               <li>
-                <Link to="/mytoys">My Toys</Link>
+                <NavLink to="/mytoys">My Toys</NavLink>
               </li>
               <li>
-                <Link to="/addtoys">Add a Toy</Link>
+                <NavLink to="/addtoys">Add a Toy</NavLink>
               </li>
               <li>
-                <Link to="/blogs">Blogs</Link>
+                <NavLink to="/blogs">Blogs</NavLink>
+              </li>
+              {/* <li>
+                <NavLink to="/login">Login</NavLink>
               </li>
               <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
+                <NavLink to="/signup">Sign Up</NavLink>
+              </li> */}
             </ul>
           </div>
           <a className="text-secondary normal-case text-2xl font-bold">Toy Palace</a>
@@ -54,30 +67,41 @@ const Nav = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/alltoys">All Toys</Link>
+              <NavLink to="/alltoys">All Toys</NavLink>
             </li>
             <li>
-              <Link to="/mytoys">My Toys</Link>
+              <NavLink to="/mytoys">My Toys</NavLink>
             </li>
             <li>
-              <Link to="/addtoys">Add a Toy</Link>
+              <NavLink to="/addtoys">Add a Toy</NavLink>
             </li>
             <li>
-              <Link to="/blogs">Blogs</Link>
+              <NavLink to="/blogs">Blogs</NavLink>
+            </li>
+            {/* <li>
+              <NavLink to="/login">Login</NavLink>
             </li>
             <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
+              <NavLink to="/signup">Sign Up</NavLink>
+            </li> */}
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-secondary text-white">Get started</a>
+          {user ? (
+          <span className="profile">
+            <img src={user.photoURL} title={user.displayName} alt="" />
+            <button className="btn" onClick={handleLogOut}>
+              SignOut
+            </button>
+          </span>
+        ) : (
+          <span>
+            <NavLink className="btn btn-secondary text-white" to="/login">Login</NavLink>
+          </span>
+        )}
         </div>
       </div>
     </div>
