@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-primary text-white">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-secondary lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -24,7 +24,7 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
             >
               <li>
                 <Link to="/">Home</Link>
@@ -49,10 +49,10 @@ const Nav = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Toy Palace</a>
+          <a className="text-secondary normal-case text-2xl font-bold">Toy Palace</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 ">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -77,7 +77,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <a className="btn btn-secondary">Get started</a>
         </div>
       </div>
     </div>

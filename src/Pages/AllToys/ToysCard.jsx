@@ -15,7 +15,7 @@ const ToysCard = ({ toy }) => {
         <p>{toy.availableQuantity}</p>
         <div className="card-actions justify-end">
           <Link to={`/alltoys/${toy._id}`}>
-            <button className="btn btn-primary"> View Details</button>
+            <button className="btn btn-secondary"> View Details</button>
           </Link>
         </div>
       </div>
