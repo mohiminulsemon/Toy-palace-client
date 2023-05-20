@@ -31,12 +31,12 @@ const SubCat = () => {
     return toys.filter((toy) => toy.subCategory === subcategory);
   };
   return (
-    <div>
-      <Tabs>
+    <div className="tabs">
+      <Tabs >
         <TabList>
-          <Tab>Marvel</Tab>
-          <Tab>DC</Tab>
-          <Tab>Transformers</Tab>
+          <Tab className="tab ">Marvel</Tab>
+          <Tab className="tab ">DC</Tab>
+          <Tab className="tab">Transformers</Tab>
         </TabList>
 
         <TabPanel>
@@ -53,7 +53,7 @@ const SubCat = () => {
           )}
         </TabPanel>
 
-        <TabPanel>
+        <TabPanel >
           <h2>DC Toys</h2>
           {isLoading ? (
             <div>Loading...</div>
