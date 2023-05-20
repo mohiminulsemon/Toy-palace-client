@@ -77,7 +77,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-secondary">Get started</a>
+          <a className="btn btn-secondary text-white">Get started</a>
         </div>
       </div>
     </div>
