@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("https://toy-server-plum.vercel.app/all-toys"),
+        // loader: () => fetch("https://toy-server-plum.vercel.app/all-toys"),
       },
       {
         path: "/alltoys/:id",

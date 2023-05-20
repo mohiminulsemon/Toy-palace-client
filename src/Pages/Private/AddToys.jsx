@@ -1,6 +1,10 @@
 // import Swal from 'sweetalert2'
 
+import { useContext } from "react";
+import { AuthContext } from "../auth/AuthProviders";
+
 const AddToys = () => {
+  const { user} = useContext(AuthContext);
   const handleAddToys = (event) => {
     event.preventDefault();
 
@@ -13,6 +17,8 @@ const AddToys = () => {
     const subCategory = form.subCategory.value;
     const description = form.description.value;
     const pictureUrl = form.pictureUrl.value;
+    const sellerEmail = form.sellersEmail.value;
+    const sellerName = form.sellerName.value;
 
     const newToy = {
       name,
@@ -22,6 +28,8 @@ const AddToys = () => {
       subCategory,
       description,
       pictureUrl,
+      sellerName,
+      sellerEmail
     };
 
     // console.log(newToy);
@@ -134,6 +142,38 @@ const AddToys = () => {
                 type="text"
                 name="description"
                 placeholder="Description"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+        </div>
+
+        {/* seller name and email */}
+        <div className="md:flex mb-8">
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Seller Name</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="sellerName"
+                placeholder="seller name"
+                value={user?.displayName}
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          <div className="form-control md:w-1/2 ml-4">
+            <label className="label">
+              <span className="label-text">Seller's email</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="sellersEmail"
+                placeholder="seller's email"
+                value={user?.email}
                 className="input input-bordered w-full"
               />
             </label>
