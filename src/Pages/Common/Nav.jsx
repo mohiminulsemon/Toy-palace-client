@@ -91,9 +91,9 @@ const Nav = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-          <span className="profile">
-            <img src={user.photoURL} title={user.displayName} alt="" />
-            <button className="btn" onClick={handleLogOut}>
+          <span className="flex gap-1">
+            <img className="w-1/5 rounded-full" src={user.photoURL} title={user.displayName} alt="" />
+            <button className="btn btn-secondary" onClick={handleLogOut}>
               SignOut
             </button>
           </span>
