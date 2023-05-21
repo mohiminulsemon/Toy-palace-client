@@ -9,11 +9,13 @@ import MyToys from "../Pages/Private/MyToys";
 import AllToys from "../Pages/AllToys/AllToys";
 import Viewdetails from "../Pages/Private/Viewdetails";
 import PrivateRoute from "./Privateroute";
+import Error from "../Pages/Common/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -51,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        // loader: () => fetch("https://toy-server-plum.vercel.app/all-toys"),
+        loader: () => fetch("https://toy-server-plum.vercel.app/all-toys"),
       },
       {
         path: "/alltoys/:id",

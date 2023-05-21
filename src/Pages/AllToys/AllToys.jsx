@@ -9,7 +9,7 @@ const AllToys = () => {
     return (
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-3">
             {
-                Toys.map(toy =>(
+                Toys?.map(toy =>(
                     <ToysCard key={toy._id} toy = {toy}></ToysCard>
                 ))
             }

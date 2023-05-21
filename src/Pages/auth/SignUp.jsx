@@ -65,8 +65,9 @@ const SignUp = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
-            <div className="form-control" onSubmit={handleRegister}>
+          <form action="" onSubmit={handleRegister}>
+          <div className="card-body "  >
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -127,6 +128,7 @@ const SignUp = () => {
               </small>
             </p>
           </div>
+          </form>
         </div>
       </div>
     </div>
