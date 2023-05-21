@@ -13,7 +13,9 @@ const SubCat = () => {
 
   const fetchToys = async () => {
     try {
-      const response = await fetch("https://toy-server-plum.vercel.app/all-toys");
+      const response = await fetch(
+        "https://toy-server-plum.vercel.app/all-toys"
+      );
       if (response.ok) {
         const data = await response.json();
         setToys(data);
@@ -31,48 +33,36 @@ const SubCat = () => {
     return toys.filter((toy) => toy.subCategory === subcategory);
   };
   return (
-    <div className="tabs">
-      <Tabs >
-        <TabList>
+    <div className="mt-20 w-11/12 mx-auto">
+      <Tabs>
+        <TabList className="flex justify-between">
           <Tab className="tab ">Marvel</Tab>
           <Tab className="tab ">DC</Tab>
           <Tab className="tab">Transformers</Tab>
         </TabList>
 
         <TabPanel>
-          <h2>Marvel Toys</h2>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            filterToysBySubcategory("marvel")
-              .slice(0, 2)
-              .map((toy) => (
-                // console.log(toy.name)
-                <ToysCard key={toy._id} toy={toy}></ToysCard>
-              ))
-          )}
-        </TabPanel>
-
-        <TabPanel >
-          <h2>DC Toys</h2>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            filterToysBySubcategory("dc").map((toy) => (
-                <ToysCard key={toy._id} toy={toy}></ToysCard>
-            ))
-          )}
+          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+            {filterToysBySubcategory("Marvel").map((toy) => (
+              <ToysCard key={toy._id} toy={toy}></ToysCard>
+            ))}
+          </div>
         </TabPanel>
 
         <TabPanel>
-          <h2>Transformers Toys</h2>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            filterToysBySubcategory("transformers").map((toy) => (
-                <ToysCard key={toy._id} toy={toy}></ToysCard>
-            ))
-          )}
+          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+            {filterToysBySubcategory("DC").map((toy) => (
+              <ToysCard key={toy._id} toy={toy}></ToysCard>
+            ))}
+          </div>
+        </TabPanel>
+
+        <TabPanel>
+          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+            {filterToysBySubcategory("Transformers").map((toy) => (
+              <ToysCard key={toy._id} toy={toy}></ToysCard>
+            ))}
+          </div>
         </TabPanel>
       </Tabs>
     </div>

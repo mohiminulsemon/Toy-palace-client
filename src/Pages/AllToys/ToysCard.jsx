@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 const ToysCard = ({ toy }) => {
   // console.log(toy);
   return (
-    <div className="card card-side bg-base-100 shadow-xl">
-      <figure>
-        <img className="h-full"  src={toy.pictureUrl} alt={toy.name} />
+    <div className="card card-side shadow-xl">
+      <figure className="w-1/2 ">
+        <img className="h-full w-full "  src={toy.pictureUrl} alt={toy.name} />
       </figure>
-      <div className="card-body w-full">
+      <div className="card-body w-1/2">
         <h2>{toy.sellerName}</h2>
         <p>{toy.name}</p>
         <p>{toy.subCategory}</p>

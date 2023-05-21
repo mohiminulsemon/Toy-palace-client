@@ -1,6 +1,7 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProviders";
 import { useContext } from "react";
+import logo from "../../assets/favpng_superhero.png"
 
 const Nav = () => {
 
@@ -62,7 +63,8 @@ const Nav = () => {
               </li> */}
             </ul>
           </div>
-          <a className="text-secondary normal-case text-2xl font-bold">Toy Palace</a>
+          <img  className="w-14 lg:inline-block hidden " src={logo} alt="" />
+          <Link to='/' className="text-secondary normal-case text-2xl font-bold">Toy Palace</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
@@ -92,7 +94,7 @@ const Nav = () => {
         <div className="navbar-end">
           {user ? (
           <span className="flex gap-1">
-            <img className="w-1/5 rounded-full" src={user.photoURL} title={user.displayName} alt="" />
+            <img className="w-12 rounded-full" src={user.photoURL} title={user.displayName} alt="" />
             <button className="btn btn-secondary" onClick={handleLogOut}>
               SignOut
             </button>

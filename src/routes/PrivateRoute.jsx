@@ -5,6 +5,7 @@ import { Circles } from "react-loader-spinner";
 import { AuthContext } from '../Pages/auth/AuthProviders';
 
 const PrivateRoute = ({children}) => {
+
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     // console.log(location);
@@ -17,7 +18,7 @@ const PrivateRoute = ({children}) => {
     if (user) {
         return children;
     }
-    return <Navigate state={{ from: location }} to="/login" replace></Navigate>;
+    return <Navigate state={{ from: location }} to="/login" ></Navigate>;
 };
 
 export default PrivateRoute;
