@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import ToysCard from "../AllToys/ToysCard";
+import CategoryCard from "./CategoryCard";
 
 const SubCat = () => {
   const [toys, setToys] = useState([]);
@@ -33,7 +33,7 @@ const SubCat = () => {
     return toys.filter((toy) => toy.subCategory === subcategory);
   };
   return (
-    <div className="mt-20 w-11/12 mx-auto">
+    <div className="mt-20 w-3/5 mx-auto">
       <Tabs>
         <TabList className="flex justify-between">
           <Tab className="tab ">Marvel</Tab>
@@ -42,25 +42,25 @@ const SubCat = () => {
         </TabList>
 
         <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
             {filterToysBySubcategory("Marvel").map((toy) => (
-              <ToysCard key={toy._id} toy={toy}></ToysCard>
+              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
             ))}
           </div>
         </TabPanel>
 
         <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
             {filterToysBySubcategory("DC").map((toy) => (
-              <ToysCard key={toy._id} toy={toy}></ToysCard>
+              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
             ))}
           </div>
         </TabPanel>
 
         <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center md:justify-between mt-10 ">
+          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
             {filterToysBySubcategory("Transformers").map((toy) => (
-              <ToysCard key={toy._id} toy={toy}></ToysCard>
+              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
             ))}
           </div>
         </TabPanel>
