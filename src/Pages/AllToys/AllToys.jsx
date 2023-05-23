@@ -53,7 +53,7 @@ const AllToys = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {filteredToys.map((toy) => (
+          {filteredToys.slice(0,20).map((toy) => (
             <tr key={toy._id}>
               <td className="px-6 py-4 whitespace-nowrap">{toy.sellerName}</td>
               <td className="px-6 py-4 whitespace-nowrap">{toy.name}</td>

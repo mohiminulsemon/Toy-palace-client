@@ -33,39 +33,39 @@ const SubCat = () => {
     return toys.filter((toy) => toy.subCategory === subcategory);
   };
   return (
-    <div className="mt-20 w-3/5 mx-auto">
-      <Tabs>
-        <TabList className="flex justify-between">
-          <Tab className="tab ">Marvel</Tab>
-          <Tab className="tab ">DC</Tab>
-          <Tab className="tab">Transformers</Tab>
-        </TabList>
+    <div className="my-20 mx-auto max-w-4xl">
+    <Tabs>
+      <TabList className="flex justify-center mb-6 ">
+        <Tab className="tab mr-3  text-xl btn btn-secondary ">Marvel</Tab>
+        <Tab className="tab mr-3  text-xl btn btn-secondary ">DC</Tab>
+        <Tab className="tab mr-3  text-xl btn btn-secondary ">Transformers</Tab>
+      </TabList>
 
-        <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
-            {filterToysBySubcategory("Marvel").map((toy) => (
-              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
-            ))}
-          </div>
-        </TabPanel>
+      <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+          {filterToysBySubcategory("Marvel").slice(0,2).map((toy) => (
+            <CategoryCard key={toy._id} toy={toy} />
+          ))}
+        </div>
+      </TabPanel>
 
-        <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
-            {filterToysBySubcategory("DC").map((toy) => (
-              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
-            ))}
-          </div>
-        </TabPanel>
+      <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+          {filterToysBySubcategory("DC").slice(0,2).map((toy) => (
+            <CategoryCard key={toy._id} toy={toy} />
+          ))}
+        </div>
+      </TabPanel>
 
-        <TabPanel>
-          <div className="flex flex-col md:flex-row gap-5 items-center  mt-10 ">
-            {filterToysBySubcategory("Transformers").map((toy) => (
-              <CategoryCard key={toy._id} toy={toy}></CategoryCard>
-            ))}
-          </div>
-        </TabPanel>
-      </Tabs>
-    </div>
+      <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+          {filterToysBySubcategory("Transformers").slice(0,2).map((toy) => (
+            <CategoryCard key={toy._id} toy={toy} />
+          ))}
+        </div>
+      </TabPanel>
+    </Tabs>
+  </div>
   );
 };
 
