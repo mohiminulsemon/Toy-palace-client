@@ -18,9 +18,7 @@ const AllToys = () => {
     <div>
       <h1 className="text-center font-bold">All Toys</h1>
       <div className="my-4">
-        <label htmlFor="search" className="sr-only">
-          Search
-        </label>
+        
         <input
           type="text"
           id="search"
