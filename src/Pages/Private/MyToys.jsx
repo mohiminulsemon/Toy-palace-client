@@ -89,11 +89,42 @@ const MyToys = () => {
       alert("Failed to update toy. Please try again.");
     }
   };
+// sorting system
 
+const [sortOrder, setSortOrder] = useState('asc');
+
+// Function to handle sorting by price
+const handleSortByPrice = () => {
+  setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+};
+
+// Function to compare toy prices for sorting
+const compareToyPrices = (a, b) => {
+  const priceA = a.price;
+  const priceB = b.price;
+
+  if (priceA < priceB) {
+    return sortOrder === 'asc' ? -1 : 1;
+  }
+  if (priceA > priceB) {
+    return sortOrder === 'asc' ? 1 : -1;
+  }
+  return 0;
+};
+ // Sort the toys based on the selected sorting option
+ const sortedToys = [...toys].sort(compareToyPrices);
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4 text-center">My Toys</h1>
-      {toys.map((toy) => (
+      <div className="flex justify-end mb-4">
+        <button
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+          onClick={handleSortByPrice}
+        >
+          Sort by Price {sortOrder === 'asc' ? '↑' : '↓'}
+        </button>
+      </div>
+      {sortedToys.map((toy) => (
         <div key={toy._id} className="mb-4">
           {editingToy === toy ? (
             <div>
