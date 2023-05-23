@@ -1,10 +1,9 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProviders";
 import { useContext } from "react";
-import logo from "../../assets/favpng_superhero.png"
+import logo from "../../assets/favpng_superhero.png";
 
 const Nav = () => {
-
   // const location = useLocation();
 
   const { user, logOut } = useContext(AuthContext);
@@ -17,7 +16,7 @@ const Nav = () => {
 
   return (
     <div>
-      <div className="navbar bg-primary text-white">
+      <div className="navbar bg-gray-900 text-white ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-secondary lg:hidden">
@@ -63,8 +62,10 @@ const Nav = () => {
               </li> */}
             </ul>
           </div>
-          <img  className="w-14 lg:inline-block hidden " src={logo} alt="" />
-          <Link to='/' className="text-white normal-case text-2xl font-bold">Toy Palace</Link>
+          <img className="w-14 lg:inline-block hidden " src={logo} alt="" />
+          <Link to="/" className="text-white normal-case text-2xl font-bold">
+            Toy Palace
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
@@ -74,12 +75,16 @@ const Nav = () => {
             <li>
               <NavLink to="/alltoys">All Toys</NavLink>
             </li>
-            <li>
-              <NavLink to="/mytoys">My Toys</NavLink>
-            </li>
-            <li>
-              <NavLink to="/addtoys">Add a Toy</NavLink>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink to="/mytoys">My Toys</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/addtoys">Add a Toy</NavLink>
+                </li>
+              </>
+            )}
             <li>
               <NavLink to="/blogs">Blogs</NavLink>
             </li>
@@ -93,17 +98,27 @@ const Nav = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-          <span className="flex gap-1">
-            <img className="w-12 rounded-full" src={user.photoURL} title={user.displayName} alt="" />
-            <button className="btn btn-secondary" onClick={handleLogOut}>
-              SignOut
-            </button>
-          </span>
-        ) : (
-          <span>
-            <NavLink className="btn btn-secondary text-white" to="/login">Login</NavLink>
-          </span>
-        )}
+            <span className="flex gap-1">
+              <img
+                className="w-12 rounded-full"
+                src={user.photoURL}
+                title={user.displayName}
+                alt=""
+              />
+              <button className="btn btn-secondary" onClick={handleLogOut}>
+                SignOut
+              </button>
+            </span>
+          ) : (
+            <span>
+              <NavLink className="btn btn-secondary text-white mr-2" to="/login">
+                Login
+              </NavLink>
+              <NavLink className="btn btn-secondary text-white" to="/signup">
+                SignUp
+              </NavLink>
+            </span>
+          )}
         </div>
       </div>
     </div>

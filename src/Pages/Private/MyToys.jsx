@@ -115,93 +115,107 @@ const compareToyPrices = (a, b) => {
  const sortedToys = [...toys].sort(compareToyPrices);
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4 text-center">My Toys</h1>
-      <div className="flex justify-end mb-4">
-        <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-          onClick={handleSortByPrice}
-        >
-          Sort by Price {sortOrder === 'asc' ? '↑' : '↓'}
-        </button>
-      </div>
+    <h1 className="text-3xl font-bold mb-4 text-center">My Toys</h1>
+    <div className="flex justify-end mb-4">
+      <button
+        className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        onClick={handleSortByPrice}
+      >
+        Sort by Price {sortOrder === "asc" ? "↑" : "↓"}
+      </button>
+    </div>
+    <div className="grid grid-cols-1  gap-4 mx-auto">
       {sortedToys.map((toy) => (
-        <div key={toy._id} className="mb-4">
-          {editingToy === toy ? (
-            <div>
-              <h3 className="text-xl font-bold">{toy.name}</h3>
-              <p>
-                <label className="block">
-                  Price:
-                  <input
-                    type="text"
-                    value={updatedPrice}
-                    onChange={(e) => setUpdatedPrice(e.target.value)}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  />
-                </label>
-              </p>
-              <p>
-                <label className="block">
-                  Quantity:
-                  <input
-                    type="text"
-                    value={updatedQuantity}
-                    onChange={(e) => setUpdatedQuantity(e.target.value)}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  />
-                </label>
-              </p>
-              <p>
-                <label className="block">
-                  Description:
-                  <textarea
-                    value={updatedDescription}
-                    onChange={(e) => setUpdatedDescription(e.target.value)}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  ></textarea>
-                </label>
-              </p>
-              <button
-                className="btn btn-secondary mr-2"
-                onClick={() => handleUpdate(toy._id)}
-              >
-                Update
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => setEditingToy(null)}
-              >
-                Cancel
-              </button>
+        <div key={toy._id} className="border border-gray-300 rounded p-4">
+          <div className="md:flex">
+            <div className="md:flex-shrink-0">
+              <img
+                className="rounded-lg md:w-56"
+                src={toy.image}
+                alt={toy.name}
+              />
             </div>
-          ) : (
-            <div>
-              <h3 className="text-xl font-bold">{toy.name}</h3>
-              <p className="mb-2">
-                Seller: {toy.sellerName} ({toy.sellerEmail})
-              </p>
-              <p className="mb-2">Price: ${toy.price}</p>
-              <p className="mb-2">Rating: {toy.rating}</p>
-              <p className="mb-2">Sub Category: {toy.subCategory}</p>
-              <p className="mb-2">Description: {toy.description}</p>
-              <button
-                className="btn btn-secondary mr-2"
-                onClick={() => handleEdit(toy)}
-              >
-                Edit
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => handleDelete(toy._id)}
-              >
-                Delete
-              </button>
+            <div className="mt-4 md:mt-0 md:ml-6">
+              {editingToy === toy ? (
+                <div>
+                  <h3 className="text-xl font-bold">{toy.name}</h3>
+                  <p>
+                    <label className="block">
+                      Price:
+                      <input
+                        type="text"
+                        value={updatedPrice}
+                        onChange={(e) => setUpdatedPrice(e.target.value)}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </label>
+                  </p>
+                  <p>
+                    <label className="block">
+                      Quantity:
+                      <input
+                        type="text"
+                        value={updatedQuantity}
+                        onChange={(e) => setUpdatedQuantity(e.target.value)}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </label>
+                  </p>
+                  <p>
+                    <label className="block">
+                      Description:
+                      <textarea
+                        value={updatedDescription}
+                        onChange={(e) =>
+                          setUpdatedDescription(e.target.value)
+                        }
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      ></textarea>
+                    </label>
+                  </p>
+                  <button
+                    className="btn btn-secondary mr-2"
+                    onClick={() => handleUpdate(toy._id)}
+                  >
+                    Update
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => setEditingToy(null)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="text-xl font-bold">{toy.name}</h3>
+                  <p className="mb-2">
+                    Seller: {toy.sellerName} ({toy.sellerEmail})
+                  </p>
+                  <p className="mb-2">Price: ${toy.price}</p>
+                  <p className="mb-2">Rating: {toy.rating}</p>
+                  <p className="mb-2">Sub Category: {toy.subCategory}</p>
+                  <p className="mb-2">Description: {toy.description}</p>
+                  <button
+                    className="btn btn-secondary mr-2"
+                    onClick={() => handleEdit(toy)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleDelete(toy._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-          <hr className="my-4" />
+          </div>
         </div>
       ))}
     </div>
+  </div>
   );
 };
 
