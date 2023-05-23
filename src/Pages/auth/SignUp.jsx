@@ -54,84 +54,85 @@ const SignUp = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign Up now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form action="" onSubmit={handleRegister}>
-          <div className="card-body "  >
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Name"
-                name="name"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="text"
-                placeholder="email"
-                name="email"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="text"
-                placeholder="password"
-                name="password"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                {" "}
-                <span className="label-text">Photo URL</span>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="max-w-md w-full mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-6">Sign Up Now!</h1>
+      <div className="bg-white shadow-md rounded px-8 py-6">
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your name"
+              className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+          <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+              Photo URL
               </label>
               <input
                 type="text"
                 placeholder="photo URL"
                 name="photo"
-                className="input input-bordered"
+                className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-indigo-500"
               />
             </div>
-            <div className="form-control mt-6">
-              <input
-                className="btn text-white btn-primary"
-                type="submit"
-                value="Sign Up"
-              />
-            </div>
-            <p>
-              <small>
-                Have already an account?{" "}
-                <Link to="/login">
-                  <span className="text-red-600">Login</span>
-                </Link>
-              </small>
-            </p>
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Sign Up
+            </button>
           </div>
-          </form>
-        </div>
+        </form>
+        <p className="text-center mt-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-indigo-500 font-bold">
+            Login here
+          </Link>
+        </p>
       </div>
     </div>
+  </div>
   );
 };
 

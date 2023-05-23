@@ -16,7 +16,7 @@ const AllToys = () => {
   );
   return (
     <div>
-      <h1 className="text-center font-bold">All Toys</h1>
+      <h1 className="text-center font-bold text-2xl">All Toys</h1>
       <div className="my-4">
         
         <input
