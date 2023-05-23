@@ -38,22 +38,22 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
+              className="menu menu-compact dropdown-content bg-primary mt-3 p-2 shadow text-black rounded-box w-52"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <NavLink to="/alltoys">All Toys</NavLink>
+                <Link to="/alltoys">All Toys</Link>
               </li>
               <li>
-                <NavLink to="/mytoys">My Toys</NavLink>
+                <Link to="/mytoys">My Toys</Link>
               </li>
               <li>
-                <NavLink to="/addtoys">Add a Toy</NavLink>
+                <Link to="/addtoys">Add a Toy</Link>
               </li>
               <li>
-                <NavLink to="/blogs">Blogs</NavLink>
+                <Link to="/blogs">Blogs</Link>
               </li>
               {/* <li>
                 <NavLink to="/login">Login</NavLink>
@@ -64,7 +64,7 @@ const Nav = () => {
             </ul>
           </div>
           <img  className="w-14 lg:inline-block hidden " src={logo} alt="" />
-          <Link to='/' className="text-secondary normal-case text-2xl font-bold">Toy Palace</Link>
+          <Link to='/' className="text-white normal-case text-2xl font-bold">Toy Palace</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">

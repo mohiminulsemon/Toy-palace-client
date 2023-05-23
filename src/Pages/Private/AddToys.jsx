@@ -1,10 +1,10 @@
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProviders";
 
 const AddToys = () => {
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const handleAddToys = (event) => {
     event.preventDefault();
 
@@ -29,173 +29,138 @@ const AddToys = () => {
       description,
       pictureUrl,
       sellerName,
-      sellerEmail
+      sellerEmail,
     };
 
     // console.log(newToy);
 
     // send data to the server
     fetch("https://toy-server-plum.vercel.app/add-toys", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newToy),
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newToy),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // if (data.insertedId) {
-        //   Swal.fire({
-        //     title: "Success!",
-        //     text: "Coffee Added Successfully",
-        //     icon: "success",
-        //     confirmButtonText: "Cool",
-        //   });
-        // }
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
       });
+  
+     
   };
 
   return (
-    <div className="bg-[#F4F3F0] p-24">
-      <h2 className="text-3xl font-extrabold">Add a Toy</h2>
-      <form onSubmit={handleAddToys}>
-        {/* form name and quantity row */}
-        <div className="md:flex mb-8">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Toy Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="name"
-                placeholder="Toy Name"
-                className="input input-bordered w-full"
-              />
-            </label>
+    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">Add a Toy</h2>
+      <form onSubmit={handleAddToys} className="max-w-lg mx-auto">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Toy Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Toy Name"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Available Quantity</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="availableQuantity"
-                placeholder="Available Quantity"
-                className="input input-bordered w-full"
-              />
-            </label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Available Quantity</label>
+            <input
+              type="text"
+              name="availableQuantity"
+              placeholder="Available Quantity"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
         </div>
-        {/* form supplier row */}
-        <div className="md:flex mb-8">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Price</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="price"
-                placeholder="Price"
-                className="input input-bordered w-full"
-              />
-            </label>
+        <div className="grid grid-cols-2 gap-4 mt-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Rating</label>
+            <input
+              type="text"
+              name="rating"
+              placeholder="Rating"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Rating</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="rating"
-                placeholder="Rating"
-                className="input input-bordered w-full"
-              />
-            </label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Price</label>
+            <input
+              type="text"
+              name="price"
+              placeholder="Price"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
         </div>
-        {/* form category and details row */}
-        <div className="md:flex mb-8">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Sub Category</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="subCategory"
-                placeholder="subCategory"
-                className="input input-bordered w-full"
-              />
-            </label>
+        <div className="grid grid-cols-2 gap-4 mt-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Sub Category</label>
+            <input
+              type="text"
+              name="subCategory"
+              placeholder="Sub Category"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="description"
-                placeholder="Description"
-                className="input input-bordered w-full"
-              />
-            </label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Description</label>
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
         </div>
-
-        {/* seller name and email */}
-        <div className="md:flex mb-8">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Seller Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="sellerName"
-                placeholder="seller name"
-                value={user?.displayName}
-                className="input input-bordered w-full"
-              />
-            </label>
+        <div className="grid grid-cols-2 gap-4 mt-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Seller Name</label>
+            <input
+              type="text"
+              name="sellerName"
+              placeholder="Seller Name"
+              value={user?.displayName}
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Seller's email</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="sellersEmail"
-                placeholder="seller's email"
-                value={user?.email}
-                className="input input-bordered w-full"
-              />
-            </label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Seller's Email</label>
+            <input
+              type="text"
+              name="sellersEmail"
+              placeholder="Seller's Email"
+              value={user?.email}
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
           </div>
         </div>
-        {/* form Photo url row */}
-        <div className="mb-8">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="pictureUrl"
-                placeholder="Photo URL"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700">Photo URL</label>
+          <input
+            type="text"
+            name="pictureUrl"
+            placeholder="Photo URL"
+            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
         </div>
-        <input type="submit" value="Add Toy" className="btn btn-block" />
+        <div className="mt-6">
+          <button
+            type="submit"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Add Toy
+          </button>
+        </div>
       </form>
     </div>
   );
