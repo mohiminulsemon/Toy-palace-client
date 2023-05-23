@@ -34,6 +34,7 @@ const SubCat = () => {
   };
   return (
     <div className="my-20 mx-auto max-w-4xl">
+      <h2 className="text-center font-bold text-xl my-5">Products category</h2>
     <Tabs>
       <TabList className="flex justify-center mb-6 ">
         <Tab className="tab mr-3  text-xl btn btn-secondary ">Marvel</Tab>

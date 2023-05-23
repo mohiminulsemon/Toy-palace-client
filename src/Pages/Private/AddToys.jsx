@@ -2,8 +2,12 @@ import Swal from 'sweetalert2'
 
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProviders";
+import useTitle from '../../hooks/useTitle';
 
 const AddToys = () => {
+
+  useTitle('addToys');
+
   const { user } = useContext(AuthContext);
   const handleAddToys = (event) => {
     event.preventDefault();

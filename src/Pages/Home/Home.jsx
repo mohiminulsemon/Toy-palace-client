@@ -1,12 +1,13 @@
+import useTitle from "../../hooks/useTitle";
 import Banner from "./Banner";
 import Gallery from "./Gallery";
 import SubCat from "./SubCat";
 
 
 const Home = () => {
+    useTitle('Home');
     return (
         <div>
-            <h1>this is home</h1>
             <Banner></Banner>
             <Gallery></Gallery>
             <SubCat></SubCat>

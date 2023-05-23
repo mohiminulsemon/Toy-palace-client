@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthProviders";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle('mytoys');
+
   const { user } = useContext(AuthContext);
 
   const [toys, setToys] = useState([]);
