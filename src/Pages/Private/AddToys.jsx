@@ -105,12 +105,14 @@ const AddToys = () => {
         <div className="grid grid-cols-2 gap-4 mt-6">
           <div>
             <label className="block text-sm font-medium text-gray-700">Sub Category</label>
-            <input
-              type="text"
-              name="subCategory"
-              placeholder="Sub Category"
-              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-            />
+            <select
+      name="subCategory"
+      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+    >
+      <option value="DC">DC</option>
+      <option value="Marvel">Marvel</option>
+      <option value="Transformers">Transformers</option>
+    </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Description</label>

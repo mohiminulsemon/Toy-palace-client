@@ -10,21 +10,13 @@ const MyToys = () => {
   const [updatedQuantity, setUpdatedQuantity] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
 
-  // const toysData = useLoaderData();
   const [toysData, setToysData] = useState([]);
   useEffect(() => {
     fetch(`https://toy-server-plum.vercel.app/all-toys`)
       .then((res) => res.json())
       .then((data) => {
-        // data.map((item) =>{
-        //   // console.log(item);
-        //   const mytoys = items.filter((toy) => toy._id !== id);
-        // });
-        const mytoys = data.filter((toy) => toy.sellerEmail == user.email);
-        setToysData(mytoys);
-        // console.log(data);
-        // console.log(user.email);
-       
+        const myToys = data.filter((toy) => toy.sellerEmail === user.email);
+        setToysData(myToys);
       });
   }, []);
 
@@ -36,12 +28,9 @@ const MyToys = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(
-        `https://toy-server-plum.vercel.app/toys/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`https://toy-server-plum.vercel.app/toys/${id}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
         setToys((prevToys) => prevToys.filter((toy) => toy._id !== id));
         alert("Toy deleted successfully!");
@@ -63,20 +52,17 @@ const MyToys = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await fetch(
-        `https://toy-server-plum.vercel.app/toys/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            price: updatedPrice,
-            quantity: updatedQuantity,
-            description: updatedDescription,
-          }),
-        }
-      );
+      const response = await fetch(`https://toy-server-plum.vercel.app/toys/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          price: updatedPrice,
+          quantity: updatedQuantity,
+          description: updatedDescription,
+        }),
+      });
       if (response.ok) {
         setToys((prevToys) =>
           prevToys.map((toy) =>
@@ -103,57 +89,69 @@ const MyToys = () => {
 
   return (
     <div>
-      <h1>My Toys</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">My Toys</h1>
       {toys.map((toy) => (
-        <div key={toy._id}>
+        <div key={toy._id} className="mb-4">
           {editingToy === toy ? (
             <div>
-              <h3>{toy.name}</h3>
+              <h3 className="text-xl font-bold">{toy.name}</h3>
               <p>
-                <label>
+                <label className="block">
                   Price:
                   <input
                     type="text"
                     value={updatedPrice}
                     onChange={(e) => setUpdatedPrice(e.target.value)}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </label>
               </p>
               <p>
-                <label>
+                <label className="block">
                   Quantity:
                   <input
                     type="text"
                     value={updatedQuantity}
                     onChange={(e) => setUpdatedQuantity(e.target.value)}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
                 </label>
               </p>
               <p>
-                <label>
+                <label className="block">
                   Description:
                   <textarea
                     value={updatedDescription}
                     onChange={(e) => setUpdatedDescription(e.target.value)}
-                  />
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  ></textarea>
                 </label>
               </p>
               <button
-                className="btn btn-secondary"
+                className="btn btn-secondary mr-2"
                 onClick={() => handleUpdate(toy._id)}
               >
                 Update
               </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => setEditingToy(null)}
+              >
+                Cancel
+              </button>
             </div>
           ) : (
             <div>
-              <h3>{toy.name}</h3>
-              <p>Seller: {toy.sellerName}</p>
-              <p>Price: ${toy.price}</p>
-              <p>Rating: {toy.rating}</p>
-              <p>Description: {toy.description}</p>
+              <h3 className="text-xl font-bold">{toy.name}</h3>
+              <p className="mb-2">
+                Seller: {toy.sellerName} ({toy.sellerEmail})
+              </p>
+              <p className="mb-2">Price: ${toy.price}</p>
+              <p className="mb-2">Rating: {toy.rating}</p>
+              <p className="mb-2">Sub Category: {toy.subCategory}</p>
+              <p className="mb-2">Description: {toy.description}</p>
               <button
-                className="btn btn-secondary"
+                className="btn btn-secondary mr-2"
                 onClick={() => handleEdit(toy)}
               >
                 Edit
@@ -166,7 +164,7 @@ const MyToys = () => {
               </button>
             </div>
           )}
-          <hr />
+          <hr className="my-4" />
         </div>
       ))}
     </div>
